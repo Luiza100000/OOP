@@ -11,11 +11,12 @@ public class Bicycle extends Cycle{
 
     @Override
     public void usage() {
-
+        System.out.println("Using bicycle");
     }
 
     @Override
     public void build() {
-
+        System.out.println("Assembling bicycle");
     }
 }
+
