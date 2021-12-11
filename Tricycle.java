@@ -11,12 +11,12 @@ public class Tricycle extends Cycle{
 
     @Override
     public void usage() {
-
+        System.out.println("Using tricycle");
     }
 
     @Override
     public void build() {
-
+        System.out.println("Assembling tricycle");
     }
 
 }
