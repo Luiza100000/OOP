@@ -12,12 +12,13 @@ public class Unicycle extends Cycle {
 
     @Override
     public void usage() {
+        System.out.println("Using unicycle");
     }
 
     @Override
     public void build() {
+        System.out.println("Assembling unicycle");
     }
-
 
 }
 
