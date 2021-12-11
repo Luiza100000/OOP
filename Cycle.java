@@ -1,4 +1,4 @@
-public abstract class Cycle {
+public abstract class Cycle implements Comparable<Cycle>  {
     int diameter;
     int wheelCount;
 
@@ -6,8 +6,6 @@ public abstract class Cycle {
         this.diameter = diameter;
         this.wheelCount = wheelCount;
     }
-
-
 
     private void buy(){
         System.out.println("Покупка велосипеда");
@@ -18,8 +16,12 @@ public abstract class Cycle {
     public abstract void build();
 
     public int getSumDiameter(){
-        int sumDiam = diameter * wheelCount;
-        return sumDiam;
+        return diameter * wheelCount;
+    }
+
+    @Override
+    public int compareTo(Cycle o) {
+        return o.getSumDiameter() - getSumDiameter();
     }
 
 }
