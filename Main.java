@@ -1,4 +1,49 @@
+import java.util.*;
+
 public class Main {
+
+    public static void main(String[] args) {
+        Cycle[] cycles = generateCycles();
+
+        bubbleSortByAsc(cycles);
+        printArray(cycles);
+
+        Arrays.sort(cycles);
+        printArray(cycles);
+
+        for (Cycle c : cycles) {
+            if (c instanceof Unicycle) {
+                c.repair();
+            }
+        }
+        Workshop workshop = new Workshop();
+
+        for(Cycle cycle: cycles){
+            workshop.setCycle(cycle);
+            workshop.repair();
+        }
+    }
+
+
+    public static void printArray(Cycle[] cycles){
+        for (Cycle cycle: cycles) {
+            System.out.print(cycle.getSumDiameter() + ", ");
+        }
+        System.out.println();
+    }
+
+    public static void bubbleSortByAsc(Cycle[] cycles){
+        for (int i = 0; i < 10; i++) {
+            for (int j = 1; j < 10; j++) {
+                if (cycles[j].getSumDiameter() < cycles[j - 1].getSumDiameter()) {
+                    Cycle sort = cycles[j];
+                    cycles[j] = cycles[j - 1];
+                    cycles[j - 1] = sort;
+                }
+            }
+        }
+    }
+
     public static Cycle[] generateCycles(){
         int n = 10;
         Cycle[] cycles = new Cycle[n];
@@ -24,28 +69,4 @@ public class Main {
         }
         return cycles;
     }
-
-    public static void main(String[] args) {
-        Cycle[] cycles = generateCycles();
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 1; j < 10; j++) {
-                if (cycles[j].getSumDiameter() < cycles[j - 1].getSumDiameter()) {
-                    Cycle sort = cycles[j];
-                    cycles[j] = cycles[j - 1];
-                    cycles[j - 1] = sort;
-                }
-            }
-        }
-        for (int i = 0; i < 10; i++) {
-            System.out.println(cycles[i].getSumDiameter());
-        }
-        for (Cycle c : cycles) {
-            if (c instanceof Unicycle) {
-                c.repair();
-            }
-        }
-        Repair.repair_all(cycles[1]);
-    }
-
 }
